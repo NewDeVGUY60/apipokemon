@@ -7,8 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
+// @Table(name = "pokemon")
+// @JsonIdentityInfo(
+    //   generator = ObjectIdGenerators.PropertyGenerator.class,
+    //   property = "id")
+    @Entity
 public class Pokemon {
 
     @Id
@@ -16,11 +27,15 @@ public class Pokemon {
     private Long id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)//fetch récupère les données le lazy "soit paraisseux" fait que la récupération se fait à la demande
+    // @JsonIgnore
+    // @JsonManagedReference
+    @ManyToOne//fetch récupère les données le lazy "soit paraisseux" fait que la récupération se fait à la demande
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private Type type;
 
-    @ManyToOne(fetch = FetchType.LAZY)//fetch récupère les données le lazy "soit paraisseux" fait que la récupération se fait à la demande
+    @JsonIgnore
+    // @JsonManagedReference
+    @ManyToOne//fetch récupère les données le lazy "soit paraisseux" fait que la récupération se fait à la demande
     @JoinColumn(name = "infirmiere_id", referencedColumnName = "id")
     private Infirmiere infirmiere;
 

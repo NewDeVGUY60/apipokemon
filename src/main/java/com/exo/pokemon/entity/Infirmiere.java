@@ -2,14 +2,16 @@ package com.exo.pokemon.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity
 public class Infirmiere {
@@ -19,8 +21,9 @@ public class Infirmiere {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
-    @JsonIgnore
+    // @JsonIgnore
+    // @JsonBackReference
+    @OneToMany(mappedBy = "infirmiere")
     private List<Pokemon> pokemonInfirmiere;
 
    
