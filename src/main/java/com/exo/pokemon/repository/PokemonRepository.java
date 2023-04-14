@@ -3,7 +3,6 @@ package com.exo.pokemon.repository;
 
 import java.util.Optional;
 
-import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

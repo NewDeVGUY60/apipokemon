@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -21,6 +23,7 @@ public class Type {
     private String type;
 
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Pokemon> pokemonWithType;
 
     public Type() {

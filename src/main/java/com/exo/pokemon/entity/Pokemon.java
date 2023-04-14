@@ -20,6 +20,10 @@ public class Pokemon {
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private Type type;
 
+    @ManyToOne(fetch = FetchType.LAZY)//fetch récupère les données le lazy "soit paraisseux" fait que la récupération se fait à la demande
+    @JoinColumn(name = "infirmiere_id", referencedColumnName = "id")
+    private Infirmiere infirmiere;
+
     public Pokemon(){}
 
     public Pokemon(String name) {
@@ -41,5 +45,16 @@ public class Pokemon {
     public void setType(Type type) {
         this.type = type;
     }
+
+
+    public Infirmiere getInfirmiere() {
+        return infirmiere;
+    }
+
+
+    public void setInfirmiere(Infirmiere infirmiere) {
+        this.infirmiere = infirmiere;
+    }
+    
 
 }
